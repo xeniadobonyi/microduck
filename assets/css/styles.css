@@ -100,8 +100,8 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 }
 
 /* mobile pre-order: the button takes no room of its own (no gap under the hero), so it would rest 90px
-   past the end of .dock. End .dock 90px earlier (inside the colours section's bottom padding) and push the
+   past the end of .dock. End .dock 130px earlier (90px + 40px of space under the docked button) (inside the colours section's bottom padding) and push the
    next section back down by the same amount: the button docks inside "Pick your colour". */
 .dock{display:flow-root}   /* keeps the negative margin below inside .dock */
-#m-colours{margin-bottom:calc(-90px - env(safe-area-inset-bottom, 0px))}
-.dock + *{margin-top:calc(90px + env(safe-area-inset-bottom, 0px)) !important}
+#m-colours{margin-bottom:calc(-130px - env(safe-area-inset-bottom, 0px))}
+.dock + *{margin-top:calc(130px + env(safe-area-inset-bottom, 0px)) !important}
