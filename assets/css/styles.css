@@ -43,3 +43,25 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 @media (prefers-reduced-motion: reduce){.cursor{animation:none}}
 .feet{transform-origin:50% 90%;animation:feet 2.8s ease-in-out infinite}@keyframes feet{0%,64%,100%{transform:translateY(0) rotate(0)}72%{transform:translateY(-3px) rotate(-14deg)}80%{transform:translateY(0) rotate(0)}88%{transform:translateY(-3px) rotate(14deg)}}a:hover .feet{color:#111111 !important}@media (prefers-reduced-motion: reduce){.feet{animation:none}}
 .feet{animation:none}.feet .step1,.feet .step2{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:step 2.4s steps(1,end) infinite}.feet .step2{animation-name:step2}@keyframes step{0%{opacity:0}12%,80%{opacity:1}100%{opacity:0}}@keyframes step2{0%,36%{opacity:0}40%,80%{opacity:1}100%{opacity:0}}@media (prefers-reduced-motion: reduce){.feet .step1,.feet .step2{animation:none;opacity:1}}
+
+/* ---------- Layout B: full-width colourway chapters ----------
+   Every section runs edge to edge; content stays on the 12-column grid.
+   Overrides the inline styles exported from the design canvas. */
+.site-d section{margin-top:0 !important}
+#stand,#skate,#real{padding:0 !important}
+.block{width:100% !important;max-width:none !important;border-radius:0 !important;padding-left:max(var(--gm),calc((100% - 1440px)/2 + var(--gm))) !important;padding-right:max(var(--gm),calc((100% - 1440px)/2 + var(--gm))) !important}
+#m-stand,#m-skate,#m-real{padding:0 !important}
+#m-stand>div,#m-skate>div,#m-real>div{border-radius:0 !important;padding:56px 20px !important}
+#m-teach{margin-top:0 !important}
+.site-d,.site-m{overflow-x:clip}
+/* square media and cards */
+section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],section [style*="border-radius: 24px"],section [style*="border-radius: 20px"]{border-radius:0 !important}
+/* chapter colours = the four shells */
+#sit,#m-sit{background:#F4E7CE}
+#stand .block,#m-stand>div{background:#3A3A3C !important}
+#walk,#m-walk{background:#CFE6EE}
+#yesno,#m-yesno{background:#E3DAEC}
+#m-yesno{padding-top:48px !important}
+#teach,#m-teach{background:#FFFFFF}
+#teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#F4F1EC !important}
+#functions a,#m-functions a{background:#FFFFFF !important;border:1px solid #111111}

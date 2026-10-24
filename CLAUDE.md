@@ -20,6 +20,7 @@ Most styling is inline on the elements (the page was exported from a design canv
 - Colours: ink `#111111`, background `#FFFFFF`, accent orange `#F26B1D`, warm beige panels `#EDE8E2` / `#F4F1EC`, colourway section `#FAF8F3`.
 - Colourways: Cream `#F4E7CE`, Graphite `#6C6A68`, Lavender `#BCAACC`, Sky `#B3DAE6`.
 - Grid (desktop): 12 columns, 24px gutter, 64px side margins, max width 1440px. Vertical rhythm in multiples of 8px.
+- Layout B (current): every section is a full-width band; media and cards have square corners. Chapter colours follow the shells: Sit & stand Cream `#F4E7CE`, Get back-up Graphite `#3A3A3C`, Walk Sky `#CFE6EE`, Yes / No Lavender `#E3DAEC`, Rollerskate black, Grab & carry orange. Implemented as the "Layout B" block at the end of `styles.css`, overriding the exported inline styles.
 - Buttons: fully rounded pills. Hover = orange fills up from the bottom in 5 steps (`steps(5,end)`), text turns black.
 - Sticky "Pre-order now": black pill with an orange outline on desktop (top right). On mobile it floats bottom right and docks at the end of the "Pick your colour" section. Two orange footprints inside appear one after the other.
 - Tagline under the hero logo types itself out behind an orange block cursor, cycling five lines.
@@ -27,7 +28,7 @@ Most styling is inline on the elements (the page was exported from a design canv
 
 ## Page sections (in order)
 
-Hero → function chips → Sit & stand → Get back-up → Walk → Yes / No → Rollerskate → Grab & carry (orange block) → Teach it new tricks (4 steps, simulator video, "Launch the simulator") → Pick your colour (colourways photo, labels under each duck) → Accessories (4 items, €39 each) → footer.
+Hero → function chips → Sit & stand → Get back-up → Walk → Yes / No → Rollerskate → Grab & carry (orange band) → Teach it new tricks (4 steps, simulator video, "Launch the simulator") → Pick your colour (colourways photo, labels under each duck) → Accessories (4 items, €39 each) → footer.
 
 ## Open items
 
