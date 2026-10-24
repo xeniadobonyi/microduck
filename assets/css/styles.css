@@ -98,3 +98,10 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass{background:rgba(255,255,255,.92) !important}.glass.on-dark{background:rgba(28,28,30,.92) !important}
 }
+
+/* mobile pre-order: the button takes no room of its own (no gap under the hero), so it would rest 90px
+   past the end of .dock. End .dock 90px earlier (inside the colours section's bottom padding) and push the
+   next section back down by the same amount: the button docks inside "Pick your colour". */
+.dock{display:flow-root}   /* keeps the negative margin below inside .dock */
+#m-colours{margin-bottom:calc(-90px - env(safe-area-inset-bottom, 0px))}
+.dock + *{margin-top:calc(90px + env(safe-area-inset-bottom, 0px)) !important}
