@@ -1,0 +1,45 @@
+body{margin:0}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Single committed light look: white ground, ink #111111, duck orange #F26B1D; Orbitron display, Exo 2 body. 12-col desktop grid, separate phone layout under 760px. */
+:root{--bg:#FFFFFF;--ink:#111111;--accent:#F26B1D;color-scheme:light}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:'Exo 2','Helvetica Neue',Arial,sans-serif}
+
+
+h1,h2{font-family:'Orbitron','Exo 2',sans-serif}
+a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
+a[style*="border-radius: 999px"],button[style*="border-radius: 999px"],a[style*="border-radius: 50%"],button[style*="border-radius: 50%"]:not([role="radio"]){position:relative;overflow:hidden;isolation:isolate;transition:color .3s steps(5,end),border-color .3s steps(5,end)}
+:is(a[style*="border-radius: 999px"],button[style*="border-radius: 999px"],a[style*="border-radius: 50%"],button[style*="border-radius: 50%"]:not([role="radio"]))::before{content:"";position:absolute;inset:0;z-index:-1;background:#F26B1D;transform:scaleY(0);transform-origin:bottom center;transition:transform .36s steps(5,end)}
+:is(a[style*="border-radius: 999px"]:hover,button[style*="border-radius: 999px"]:hover,a[style*="border-radius: 50%"]:hover,button[style*="border-radius: 50%"]:not([role="radio"]):hover){color:#111111 !important;border-color:#F26B1D !important}
+:is(a[style*="border-radius: 999px"]:hover,button[style*="border-radius: 999px"]:hover,a[style*="border-radius: 50%"]:hover,button[style*="border-radius: 50%"]:not([role="radio"]):hover)::before{transform:scaleY(1)}
+@media (prefers-reduced-motion: reduce){:is(a[style*="border-radius: 999px"],button[style*="border-radius: 999px"],a[style*="border-radius: 50%"],button[style*="border-radius: 50%"]:not([role="radio"]))::before{transition:none}}
+:root{--gm:clamp(20px,4.4445vw,64px)}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gm);padding-right:var(--gm);box-sizing:border-box;width:100%}
+.block{width:calc(100% - 24px);max-width:1416px;margin:0 auto;padding-left:calc(var(--gm) - 12px);padding-right:calc(var(--gm) - 12px);border-radius:40px;box-sizing:border-box}
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+@media (max-width:860px){.g>*{grid-column:1/-1 !important;grid-row:auto !important}.g>.half{grid-column:span 6 !important}.g>.end{justify-self:start !important;text-align:left !important}}
+.photo{background-image:url(../media/duck.png);background-repeat:no-repeat;background-color:#EDE8E2}
+.hero{background-size:100% auto;background-position:center top}
+.head{background-size:300%;background-position:36% 14%}
+.yes{transform-origin:50% 80%;animation:yes 1.6s ease-in-out infinite}
+.no{transform-origin:50% 80%;animation:no 1.6s ease-in-out infinite}
+.bob{animation:bob 2.4s ease-in-out infinite}
+@keyframes yes{0%,100%{transform:rotate(0)}25%{transform:rotate(9deg)}50%{transform:rotate(0)}75%{transform:rotate(9deg)}}
+@keyframes no{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-5%) rotate(-4deg)}75%{transform:translateX(5%) rotate(4deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@media (prefers-reduced-motion: reduce){.yes,.no,.bob{animation:none}}
+.cursor{animation:cur .8s steps(1,end) infinite}@keyframes cur{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.cursor{animation:none}}
+
+.mhero{background-size:cover;background-position:52% 0%}
+.chips{scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.cursor{animation:cur .8s steps(1,end) infinite}@keyframes cur{50%{opacity:0}}
+.site-m{display:none}
+@media (max-width:760px){.site-d{display:none}.site-m{display:block}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.fine{font-size:11px;color:#8A8A8A}
+@media (prefers-reduced-motion: reduce){.cursor{animation:none}}
+.feet{transform-origin:50% 90%;animation:feet 2.8s ease-in-out infinite}@keyframes feet{0%,64%,100%{transform:translateY(0) rotate(0)}72%{transform:translateY(-3px) rotate(-14deg)}80%{transform:translateY(0) rotate(0)}88%{transform:translateY(-3px) rotate(14deg)}}a:hover .feet{color:#111111 !important}@media (prefers-reduced-motion: reduce){.feet{animation:none}}
+.feet{animation:none}.feet .step1,.feet .step2{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:step 2.4s steps(1,end) infinite}.feet .step2{animation-name:step2}@keyframes step{0%{opacity:0}12%,80%{opacity:1}100%{opacity:0}}@keyframes step2{0%,36%{opacity:0}40%,80%{opacity:1}100%{opacity:0}}@media (prefers-reduced-motion: reduce){.feet .step1,.feet .step2{animation:none;opacity:1}}
