@@ -66,6 +66,7 @@
     if (o.auto != null) setAuto(o.auto && !reduce);
     if (o.ease != null) EASE = o.ease;
     if (o.range != null) PASS_RANGE = o.range;
+    if (o.scale != null) { SCALE = o.scale; sizeDesktop(); }
     requestDraw(true);
   };
 
@@ -75,6 +76,14 @@
   if (!scrubs.length) return;
   if (reduce) scrubs.forEach(function (s) { s.el.classList.add('scrub-static'); });
   else setAuto(true);   // the duck plays once by itself when the page opens
+
+  /* desktop canvas height follows the duck size (frame height minus the cropped top strip) */
+  function sizeDesktop() {
+    scrubs.forEach(function (s) {
+      if (s.mode === 'pass' && s.canvas) s.canvas.style.aspectRatio = String(+(1 / (SCALE * (1 - TOP_CROP))).toFixed(4));
+    });
+  }
+  sizeDesktop();
 
   /* first frame straight away, then the rest in order */
   load(0);
@@ -121,7 +130,6 @@
       ctx.drawImage(im, px, py, sz, sz);
       return null;
     }
-    if (SCALE >= 1) { cover(ctx, im, w, h, 0.5, 0.5); return null; }
     var size = w * SCALE, x = (w - size) / 2, y = -size * TOP_CROP;
     ctx.drawImage(im, x, y, size, size);
     return { x: x, y: y, size: size };
