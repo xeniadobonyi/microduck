@@ -57,11 +57,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 /* square media and cards */
 section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],section [style*="border-radius: 24px"],section [style*="border-radius: 20px"]{border-radius:0 !important}
 /* chapter colours = the four shells */
-#sit,#m-sit{background:#F4E7CE}
+#sit,#m-sit{background:#FFFFFF}
 #stand .block,#m-stand>div{background:#3A3A3C !important}
 #walk,#m-walk{background:#CFE6EE}
 #yesno,#m-yesno{background:#E3DAEC}
 #m-yesno{padding-top:48px !important}
-#teach,#m-teach{background:#FFFFFF}
-#teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#F4F1EC !important}
+#teach,#m-teach{background:#F4E7CE}
+#teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#FFFFFF !important}
 #functions a,#m-functions a{background:#FFFFFF !important;border:1px solid #111111}
