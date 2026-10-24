@@ -49,16 +49,6 @@
 
 </section>
 
-<!-- FUNCTION INDEX -->
-<section id="functions">
-<div class="wrap g" style="grid-template-columns: repeat(5, minmax(0, 1fr)); padding-top: 24px; padding-bottom: 24px; row-gap: 12px; font-size: 14px">
-<a href="#sit" class="half" style="grid-column: span 1; display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">01</span>Sit &amp; stand</a>
-<a href="#stand" class="half" style="grid-column: span 1; display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">02</span>Get back-up</a>
-<a href="#walk" class="half" style="grid-column: span 1; display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">03</span>Walk</a>
-<a href="#skate" class="half" style="grid-column: span 1; display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">04</span>Rollerskate</a>
-<a href="#real" class="half" style="grid-column: span 1; display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">05</span>Grab &amp; carry</a>
-</div>
-</section>
 
 <!-- 01 SIT & STAND -->
 <section id="sit" style="display: flex; min-height: min(100vh, 1000px)">
@@ -263,16 +253,11 @@
 
 </section>
 
-<!-- FUNCTION CHIPS: swipe row -->
-<section id="m-functions" class="chips" style="overflow-x: auto; padding: 16px 0">
-<div style="display: flex; gap: 8px; padding: 0 20px; width: max-content; font-size: 14px">
-<a href="#m-sit" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">01</span>Sit &amp; stand</a>
-<a href="#m-stand" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">02</span>Get back-up</a>
-<a href="#m-walk" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">03</span>Walk</a>
-<a href="#m-skate" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">04</span>Rollerskate</a>
-<a href="#m-real" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: #F4F1EC; font-weight: 500"><span style="font-size: 12px">05</span>Grab &amp; carry</a>
+<!-- Sticky pre-order: sits right under the hero, then stays at the bottom of the screen
+     until the end of "Pick your colour" (the end of .dock) -->
+<div class="m-buy" style="position: sticky; top: calc(100dvh - 90px - env(safe-area-inset-bottom, 0px)); margin-bottom: calc(-90px - env(safe-area-inset-bottom, 0px)); padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 5; pointer-events: none; display: flex; justify-content: flex-end">
+<a href="#m-colours" class="glass" style="pointer-events: auto; height: 58px; border-radius: 999px; background: #111111; color: #FFFFFF; display: inline-flex; align-items: center; gap: 12px; padding: 0 28px 0 20px; font-size: 17px; font-weight: 700; box-shadow: 0 10px 28px rgba(17,17,17,.25)"><span class="feet" aria-hidden="true" style="display: inline-flex; color: #F26B1D"><svg width="26" height="26" viewBox="0 0 20 20" aria-hidden="true"><g class="step1"><rect x="2.6" y="7.6" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(-8 5.8 12.4)"></rect></g><g class="step2"><rect x="11" y="2.8" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(8 14.2 7.6)"></rect></g></svg></span>Pre-order now</a>
 </div>
-</section>
 
 <!-- 01 SIT & STAND -->
 <section id="m-sit" style="padding: 48px 20px; display: flex; flex-direction: column; gap: 20px">
@@ -373,10 +358,6 @@
 </div>
 </section>
 
-<!-- Sticky pre-order -->
-<div style="position: sticky; bottom: 0; margin-top: -90px; padding: 12px 16px calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 5; pointer-events: none; display: flex; justify-content: flex-end">
-<a href="#m-colours" class="glass" style="pointer-events: auto; height: 58px; border-radius: 999px; background: #111111; color: #FFFFFF; display: inline-flex; align-items: center; gap: 12px; padding: 0 28px 0 20px; font-size: 17px; font-weight: 700; box-shadow: 0 10px 28px rgba(17,17,17,.25)"><span class="feet" aria-hidden="true" style="display: inline-flex; color: #F26B1D"><svg width="26" height="26" viewBox="0 0 20 20" aria-hidden="true"><g class="step1"><rect x="2.6" y="7.6" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(-8 5.8 12.4)"></rect></g><g class="step2"><rect x="11" y="2.8" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(8 14.2 7.6)"></rect></g></svg></span>Pre-order now</a>
-</div>
 </div>
 <!-- ACCESSORIES -->
 <section id="m-accessories" style="padding: 64px 20px; display: flex; flex-direction: column; gap: 24px">

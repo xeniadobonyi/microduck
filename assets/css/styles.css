@@ -29,7 +29,6 @@ a[style*="border-radius: 999px"],button[style*="border-radius: 999px"],a[style*=
 @media (prefers-reduced-motion: reduce){.cursor{animation:none}}
 
 .mhero{background-size:cover;background-position:52% 0%}
-.chips{scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
 .cursor{animation:cur .8s steps(1,end) infinite}@keyframes cur{50%{opacity:0}}
 .site-m{display:none}
 @media (max-width:760px){.site-d{display:none}.site-m{display:block}}
@@ -57,7 +56,6 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 #walk,#m-walk{background:#CFE6EE}
 #teach,#m-teach{background:#F4E7CE}
 #teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#FFFFFF !important}
-#functions a,#m-functions a{background:#FFFFFF !important;border:1px solid #111111}
 
 /* ---------- Hero duck (plays once on arrival) ----------
    Desktop: full-width canvas, height matches the duck size in scrub.js (SCALE, TOP_CROP).
