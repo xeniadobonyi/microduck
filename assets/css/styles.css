@@ -70,7 +70,7 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
    Desktop: the duck stays the full-width size it always had and plays as it scrolls past.
    Mobile: the stage sticks while the duck plays, at the same size as the old hero photo. */
 .scrub-d{position:relative}
-.scrub-d .scrub-canvas{display:block;width:100%;aspect-ratio:5/4;max-width:100%}
+.scrub-d .scrub-canvas{display:block;width:100%;aspect-ratio:25/16;max-width:100%}
 .scrub-m{position:relative;height:175svh}
 .scrub-m .scrub-stage{position:sticky;top:0;height:100svh;min-height:600px;display:flex;flex-direction:column;padding-top:64px;box-sizing:border-box}
 .scrub-m .scrub-canvas{display:block;flex:1 1 auto;min-height:0;width:100%}

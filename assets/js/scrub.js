@@ -1,4 +1,5 @@
-/* Scroll-scrubbed hero, Apple-style: the duck's frame sequence plays forwards as you scroll
+/* Hero duck: by default (AUTO) the clip plays once by itself when the page opens.
+   With AUTO off it is scroll-scrubbed, Apple-style: the duck's frame sequence plays forwards as you scroll
    down and backwards as you scroll up. Frames: assets/media/sit-quack/001.webp … NNN.webp.
 
    data-mode="pass" (desktop): the canvas keeps its normal full-width place in the page and
@@ -8,7 +9,7 @@
   var FRAMES = 120;
   var PATH = 'assets/media/sit-quack/';
   var PASS_RANGE = 0.42;   // desktop: fraction of the duck's height you scroll to play the whole clip
-  var SCALE = 0.8;         // desktop: duck size relative to the original full-size hero (1 = full size)
+  var SCALE = 0.64;        // desktop: duck size relative to the original full-size hero (1 = full size)
   var M_FILL = 0.8;        // mobile: duck width as a share of the screen width (capped so it fits the height)
   var M_X = 0.54, M_Y = 0.955;   // mobile: duck centre / feet position inside the frame
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,6 +73,7 @@
   });
   if (!scrubs.length) return;
   if (reduce) scrubs.forEach(function (s) { s.el.classList.add('scrub-static'); });
+  else setAuto(true);   // the duck plays once by itself when the page opens
 
   /* first frame straight away, then the rest in order */
   load(0);
