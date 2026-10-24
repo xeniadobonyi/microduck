@@ -20,16 +20,11 @@ a[style*="border-radius: 999px"],button[style*="border-radius: 999px"],a[style*=
 .block{width:calc(100% - 24px);max-width:1416px;margin:0 auto;padding-left:calc(var(--gm) - 12px);padding-right:calc(var(--gm) - 12px);border-radius:40px;box-sizing:border-box}
 .g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
 @media (max-width:860px){.g>*{grid-column:1/-1 !important;grid-row:auto !important}.g>.half{grid-column:span 6 !important}.g>.end{justify-self:start !important;text-align:left !important}}
-.photo{background-image:url(../media/duck.png);background-repeat:no-repeat;background-color:#EDE8E2}
 .hero{background-size:100% auto;background-position:center top}
 .head{background-size:300%;background-position:36% 14%}
-.yes{transform-origin:50% 80%;animation:yes 1.6s ease-in-out infinite}
-.no{transform-origin:50% 80%;animation:no 1.6s ease-in-out infinite}
 .bob{animation:bob 2.4s ease-in-out infinite}
-@keyframes yes{0%,100%{transform:rotate(0)}25%{transform:rotate(9deg)}50%{transform:rotate(0)}75%{transform:rotate(9deg)}}
-@keyframes no{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-5%) rotate(-4deg)}75%{transform:translateX(5%) rotate(4deg)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
-@media (prefers-reduced-motion: reduce){.yes,.no,.bob{animation:none}}
+@media (prefers-reduced-motion: reduce){.bob{animation:none}}
 .cursor{animation:cur .8s steps(1,end) infinite}@keyframes cur{50%{opacity:0}}
 @media (prefers-reduced-motion: reduce){.cursor{animation:none}}
 
@@ -60,22 +55,18 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 #sit,#m-sit{background:#FFFFFF}
 #stand .block,#m-stand>div{background:#3A3A3C !important}
 #walk,#m-walk{background:#CFE6EE}
-#yesno,#m-yesno{background:#E3DAEC}
-#m-yesno{padding-top:48px !important}
 #teach,#m-teach{background:#F4E7CE}
 #teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#FFFFFF !important}
 #functions a,#m-functions a{background:#FFFFFF !important;border:1px solid #111111}
 
-/* ---------- Hero scroll scrub ----------
-   Desktop: the duck stays the full-width size it always had and plays as it scrolls past.
-   Mobile: the stage sticks while the duck plays, at the same size as the old hero photo. */
+/* ---------- Hero duck (plays once on arrival) ----------
+   Desktop: full-width canvas, height matches the duck size in scrub.js (SCALE, TOP_CROP).
+   Mobile: a screen-high stage; the canvas fills what the title block leaves. */
 .scrub-d{position:relative}
 .scrub-d .scrub-canvas{display:block;width:100%;aspect-ratio:25/15.04;max-width:100%}
-.scrub-m{position:relative;height:175svh}
-.scrub-m .scrub-stage{position:sticky;top:0;height:100svh;min-height:600px;display:flex;flex-direction:column;padding-top:64px;box-sizing:border-box}
+.scrub-m{position:relative}
+.scrub-m .scrub-stage{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;padding-top:64px;box-sizing:border-box}
 .scrub-m .scrub-canvas{display:block;flex:1 1 auto;min-height:0;width:100%}
-.scrub-static.scrub-m,.scrub-auto.scrub-m{height:auto}
-.scrub-static.scrub-m .scrub-stage,.scrub-auto.scrub-m .scrub-stage{position:relative}
 /* top navigation stays visible while the hero duck is on screen */
 .hero-nav{transition:background-color .25s ease,box-shadow .25s ease}
 .hero-nav.is-stuck{background:rgba(242,236,228,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(17,17,17,.06)}
