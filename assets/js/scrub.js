@@ -12,7 +12,8 @@
   var M_FILL = 0.8;        // mobile: duck width as a share of the screen width (capped so it fits the height)
   var M_X = 0.54, M_Y = 0.955;   // mobile: duck centre / feet position inside the frame
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var EASE = 110;          // ms: how softly the frame glides to where the scroll is (higher = smoother, laggier)
+  var EASE = 110;          // desktop, ms: how softly the frame glides to where the scroll is (higher = smoother, laggier)
+  var M_EASE = 0;          // mobile: follow the finger directly; touch scrolling already has its own momentum
 
   /* How much the picture changes between consecutive frames (measured from the clip).
      Scroll is mapped to motion, not to frame number, so fast moments (the sit-down)
@@ -41,6 +42,13 @@
     im.src = src(i);
     return (imgs[i] = im);
   }
+
+  /* lets a preview page try other settings: mdScrubTune({ ease: 40, range: 0.3 }) */
+  window.mdScrubTune = function (o) {
+    if (o.ease != null) EASE = o.ease;
+    if (o.range != null) PASS_RANGE = o.range;
+    requestDraw(true);
+  };
 
   var scrubs = Array.prototype.slice.call(document.querySelectorAll('[data-scrub]')).map(function (el) {
     return { el: el, mode: el.getAttribute('data-mode') || 'pin', canvas: el.querySelector('canvas'), last: '', cur: -1 };
@@ -127,7 +135,10 @@
 
     var target = reduce ? 0 : frameAt(progress(s));
     if (s.cur < 0 || force || reduce) s.cur = target;
-    else s.cur += (target - s.cur) * (1 - Math.exp(-dt / EASE));   // ease, frame-rate independent
+    else {
+      var ease = s.mode === 'pin' ? M_EASE : EASE;
+      s.cur = ease > 0 ? s.cur + (target - s.cur) * (1 - Math.exp(-dt / ease)) : target;   // frame-rate independent
+    }
     var moving = Math.abs(target - s.cur) > 0.02;
     if (!moving) s.cur = target;
 
