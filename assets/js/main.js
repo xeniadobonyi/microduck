@@ -52,4 +52,32 @@
     btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     btn.querySelector('.ico-open').hidden = open; btn.querySelector('.ico-close').hidden = !open;
   });
+
+  /* glass pre-order button: dark glass + white text over dark bands and videos, light glass elsewhere */
+  (function(){
+    var btns = [].slice.call(document.querySelectorAll('a.glass'));
+    if (!btns.length || !document.elementsFromPoint) return;
+    function lum(c){
+      var m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null;
+      var p = m[1].split(',').map(parseFloat); if (p.length > 3 && p[3] < 0.5) return null;   // see-through: look further down
+      return (0.2126 * p[0] + 0.7152 * p[1] + 0.0722 * p[2]) / 255;
+    }
+    function behind(b){
+      var r = b.getBoundingClientRect(); if (!r.width) return null;
+      var els = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (el === b || b.contains(el) || el.contains(b)) continue;
+        if (el.tagName === 'VIDEO') return true;                          // the clips are on black
+        if (el.tagName === 'IMG' || el.tagName === 'CANVAS') return false;  // light photos, beige hero
+        var l = lum(getComputedStyle(el).backgroundColor);
+        if (l !== null) return l < 0.45;
+      }
+      return false;
+    }
+    var q = false;
+    function check(){ q = false; btns.forEach(function(b){ var d = behind(b); if (d !== null) b.classList.toggle('on-dark', d); }); }
+    function req(){ if (!q) { q = true; requestAnimationFrame(check); } }
+    window.addEventListener('scroll', req, { passive: true }); window.addEventListener('resize', req); req();
+  })();
 })();
