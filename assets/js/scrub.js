@@ -9,6 +9,7 @@
   var FRAMES = 120;
   var PATH = 'assets/media/sit-quack/';
   var PASS_RANGE = 0.42;   // desktop: fraction of the duck's height you scroll to play the whole clip
+  var TOP_CROP = 0.06;     // desktop: empty strip cut off the top of the frame (keep in sync with the CSS aspect-ratio)
   var SCALE = 0.64;        // desktop: duck size relative to the original full-size hero (1 = full size)
   var M_FILL = 0.8;        // mobile: duck width as a share of the screen width (capped so it fits the height)
   var M_X = 0.54, M_Y = 0.955;   // mobile: duck centre / feet position inside the frame
@@ -121,7 +122,7 @@
       return null;
     }
     if (SCALE >= 1) { cover(ctx, im, w, h, 0.5, 0.5); return null; }
-    var size = w * SCALE, x = (w - size) / 2, y = (h - size) / 2;
+    var size = w * SCALE, x = (w - size) / 2, y = -size * TOP_CROP;
     ctx.drawImage(im, x, y, size, size);
     return { x: x, y: y, size: size };
   }
@@ -133,8 +134,8 @@
     gx.addColorStop(0, 'rgba(0,0,0,0)'); gx.addColorStop(0.14, '#000');
     gx.addColorStop(0.86, '#000'); gx.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = gx; ctx.fillRect(0, 0, w, h);
-    var gy = ctx.createLinearGradient(0, box.y, 0, box.y + box.size);
-    gy.addColorStop(0, 'rgba(0,0,0,0)'); gy.addColorStop(0.1, '#000');
+    var top = Math.max(0, box.y), gy = ctx.createLinearGradient(0, top, 0, box.y + box.size);
+    gy.addColorStop(0, 'rgba(0,0,0,0)'); gy.addColorStop(0.05, '#000');
     gy.addColorStop(0.94, '#000'); gy.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = gy; ctx.fillRect(0, 0, w, h);
     ctx.globalCompositeOperation = 'source-over';
