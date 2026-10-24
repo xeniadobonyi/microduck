@@ -8,6 +8,7 @@
   var FRAMES = 120;
   var PATH = 'assets/media/sit-quack/';
   var PASS_RANGE = 0.42;   // desktop: fraction of the duck's height you scroll to play the whole clip
+  var SCALE = 0.8;         // duck size relative to the original full-size hero (1 = full size)
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var imgs = new Array(FRAMES);
@@ -81,8 +82,28 @@
     s.last = key;
     var ctx = c.getContext('2d');
     ctx.clearRect(0, 0, w, h);
-    if (s.mode === 'pass') cover(ctx, im, w, h, 0.5, 0.5);
-    else cover(ctx, im, w, h, 0.52, 0);           // same crop as the old mobile hero photo
+    if (SCALE >= 1) {
+      if (s.mode === 'pass') cover(ctx, im, w, h, 0.5, 0.5);
+      else cover(ctx, im, w, h, 0.52, 0);         // same crop as the old mobile hero photo
+      return;
+    }
+    /* smaller duck: draw the square frame at SCALE of the full-size height, centred,
+       and fade its edges into the hero background */
+    var full = s.mode === 'pass' ? w : Math.max(w, h);   // size the frame had at 100%
+    var size = full * SCALE;
+    var x = (w - size) / 2;
+    var y = s.mode === 'pass' ? (h - size) / 2 : h - size;
+    ctx.drawImage(im, x, y, size, size);
+    ctx.globalCompositeOperation = 'destination-in';
+    var gx = ctx.createLinearGradient(x, 0, x + size, 0);
+    gx.addColorStop(0, 'rgba(0,0,0,0)'); gx.addColorStop(0.14, '#000');
+    gx.addColorStop(0.86, '#000'); gx.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = gx; ctx.fillRect(0, 0, w, h);
+    var gy = ctx.createLinearGradient(0, y, 0, y + size);
+    gy.addColorStop(0, 'rgba(0,0,0,0)'); gy.addColorStop(0.1, '#000');
+    gy.addColorStop(0.94, '#000'); gy.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = gy; ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'source-over';
   }
 
   /* top navigation: give it a soft background once the page has scrolled */
