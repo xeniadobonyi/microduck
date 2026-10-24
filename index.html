@@ -16,21 +16,7 @@
 
 <!-- HERO -->
 <section style="position: relative; background: linear-gradient(to right, #EFE6DB 0%, #F4EDE3 24%, #F1E8DE 50%, #E5DBD0 76%, #DAD1C6 100%); overflow: clip">
-<div class="scrub" data-scrub>
-<div class="scrub-stage">
-<canvas class="scrub-canvas" role="img" aria-label="Microduck sits down and quacks as you scroll"></canvas>
-<div style="position: relative">
-<div class="wrap g" style="padding-top: 16px; padding-bottom: 40px; align-items: end; row-gap: 24px">
-<div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 8px">
-<h1 style="margin: 0; font-family: 'Orbitron', 'Exo 2', sans-serif; font-weight: 500; letter-spacing: 0.01em; line-height: 1; font-size: clamp(56px, 11vw, 168px); color: #111111">microduck</h1>
-<span class="tagline" style="display: block; min-height: 20px; font-size: 14px; font-weight: 500; line-height: 20px; white-space: nowrap"><span class="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true" style="display: inline-block; width: 8px; height: 15px; margin-left: 2px; vertical-align: -2px; background: #F26B1D"></span></span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<header style="position: absolute; top: 0; left: 0; right: 0">
+<header class="hero-nav" style="position: sticky; top: 0; z-index: 10">
 <div class="wrap g" style="min-height: 72px; align-items: center; row-gap: 8px; padding-top: 8px; padding-bottom: 8px">
 <a href="#top" aria-label="Microduck home" style="grid-column: 1 / span 5; display: flex; align-items: center">
 <span style="font-family: 'Orbitron', 'Exo 2', sans-serif; font-weight: 500; letter-spacing: 0.01em; line-height: 1; font-size: 24px; color: #111111">microduck</span>
@@ -45,6 +31,18 @@
 <a href="#colours" style="position: fixed; top: 16px; right: var(--gm); z-index: 20; height: 44px; padding: 0 22px 0 16px; border-radius: 999px; border: 2px solid #F26B1D; box-sizing: border-box; background: #111111; color: #FFFFFF; display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; box-shadow: 0 8px 24px rgba(17,17,17,.2)"><span class="feet" aria-hidden="true" style="display: inline-flex; color: #F26B1D"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><g class="step1"><rect x="2.6" y="7.6" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(-8 5.8 12.4)"></rect></g><g class="step2"><rect x="11" y="2.8" width="6.4" height="9.6" rx="1.6" fill="currentColor" transform="rotate(8 14.2 7.6)"></rect></g></svg></span>Pre-order now</a>
 </div>
 </header>
+<div class="scrub scrub-d" data-scrub data-mode="pass">
+<canvas class="scrub-canvas" role="img" aria-label="Microduck sits down and quacks as you scroll"></canvas>
+</div>
+<div style="position: relative">
+<div class="wrap g" style="padding-top: 16px; padding-bottom: 40px; align-items: end; row-gap: 24px">
+<div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-family: 'Orbitron', 'Exo 2', sans-serif; font-weight: 500; letter-spacing: 0.01em; line-height: 1; font-size: clamp(56px, 11vw, 168px); color: #111111">microduck</h1>
+<span class="tagline" style="display: block; min-height: 20px; font-size: 14px; font-weight: 500; line-height: 20px; white-space: nowrap"><span class="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true" style="display: inline-block; width: 8px; height: 15px; margin-left: 2px; vertical-align: -2px; background: #F26B1D"></span></span>
+</div>
+</div>
+</div>
+
 
 </section>
 
@@ -250,7 +248,23 @@
 
 <!-- HERO: full phone screen -->
 <section style="position: relative; background: linear-gradient(to right, #EFE6DB 0%, #F4EDE3 24%, #F1E8DE 50%, #E5DBD0 76%, #DAD1C6 100%); overflow: clip">
-<div class="scrub scrub-m" data-scrub>
+<header class="hero-nav" style="position: sticky; top: 0; z-index: 10; margin-bottom: -64px; height: 64px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box">
+<a href="#m-top" aria-label="Microduck home" style="font-family: 'Orbitron', 'Exo 2', sans-serif; font-weight: 500; letter-spacing: 0.01em; line-height: 1; font-size: 20px">microduck</a>
+<div style="display: flex; align-items: center; gap: 8px">
+<button type="button" id="m-menu-btn" aria-label="Open menu" aria-expanded="false" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: #111111">
+<span class="ico-open"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 6h14M3 14h14"></path></svg></span>
+<span class="ico-close" hidden><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"></path></svg></span>
+</button>
+</div>
+<nav aria-label="Main" id="m-menu" hidden style="position: absolute; top: 64px; left: 8px; right: 8px; background: #FFFFFF; border-radius: 28px; padding: 16px 20px 24px; display: flex; flex-direction: column; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 2">
+<a href="#blog" style="font-size: 17px; font-weight: 500; padding: 12px 0">Blog</a>
+<a href="#press" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Press Kit</a>
+<a href="#simulator" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Simulator</a>
+<a href="#open-source" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Open source</a>
+<a href="#community" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Community</a>
+</nav>
+</header>
+<div class="scrub scrub-m" data-scrub data-mode="pin">
 <div class="scrub-stage">
 <canvas class="scrub-canvas" role="img" aria-label="Microduck sits down and quacks as you scroll"></canvas>
 <div style="position: relative; padding: 16px 20px 32px; display: flex; flex-direction: column; gap: 16px">
@@ -262,23 +276,7 @@
 </div>
 </div>
 
-<header style="position: absolute; top: 0; left: 0; right: 0; height: 64px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box">
-<a href="#m-top" aria-label="Microduck home" style="font-family: 'Orbitron', 'Exo 2', sans-serif; font-weight: 500; letter-spacing: 0.01em; line-height: 1; font-size: 20px">microduck</a>
-<div style="display: flex; align-items: center; gap: 8px">
-<button type="button" id="m-menu-btn" aria-label="Open menu" aria-expanded="false" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: #111111">
-<span class="ico-open"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 6h14M3 14h14"></path></svg></span>
-<span class="ico-close" hidden><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"></path></svg></span>
-</button>
-</div>
-</header>
 
-<nav aria-label="Main" id="m-menu" hidden style="position: absolute; top: 64px; left: 8px; right: 8px; background: #FFFFFF; border-radius: 28px; padding: 16px 20px 24px; display: flex; flex-direction: column; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 2">
-<a href="#blog" style="font-size: 17px; font-weight: 500; padding: 12px 0">Blog</a>
-<a href="#press" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Press Kit</a>
-<a href="#simulator" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Simulator</a>
-<a href="#open-source" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Open source</a>
-<a href="#community" style="font-size: 17px; font-weight: 500; padding: 12px 0; border-top: 1px solid #EEEAE4">Community</a>
-</nav>
 
 </section>
 
