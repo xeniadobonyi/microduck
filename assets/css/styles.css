@@ -74,8 +74,8 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 .scrub-m{position:relative;height:175svh}
 .scrub-m .scrub-stage{position:sticky;top:0;height:100svh;min-height:600px;display:flex;flex-direction:column;padding-top:64px;box-sizing:border-box}
 .scrub-m .scrub-canvas{display:block;flex:1 1 auto;min-height:0;width:100%}
-.scrub-static.scrub-m{height:auto}
-.scrub-static.scrub-m .scrub-stage{position:relative}
+.scrub-static.scrub-m,.scrub-auto.scrub-m{height:auto}
+.scrub-static.scrub-m .scrub-stage,.scrub-auto.scrub-m .scrub-stage{position:relative}
 /* top navigation stays visible while the hero duck is on screen */
 .hero-nav{transition:background-color .25s ease,box-shadow .25s ease}
 .hero-nav.is-stuck{background:rgba(242,236,228,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(17,17,17,.06)}

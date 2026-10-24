@@ -36,7 +36,11 @@
     var im = new Image();
     im.decoding = 'async';
     im.onload = function () {
-      var done = function () { im._ok = true; requestDraw(); };
+      var done = function () {
+        im._ok = true; loaded++;
+        if (AUTO && loaded >= FRAMES && !playStart) startPlay();   // play once every frame is ready
+        requestDraw();
+      };
       if (im.decode) im.decode().then(done, done); else done();   // decode now, not mid-scroll
     };
     im.src = src(i);
@@ -44,7 +48,20 @@
   }
 
   /* lets a preview page try other settings: mdScrubTune({ ease: 40, range: 0.3 }) */
+  /* AUTO: the clip plays once by itself when the page opens (at FPS), instead of following the scroll */
+  var AUTO = false, FPS = 30, playStart = 0, loaded = 0;
+  function playing() { return AUTO && playStart > 0 && autoFrame() < FRAMES - 1; }
+  function autoFrame() { return playStart ? Math.min(FRAMES - 1, (performance.now() - playStart) / 1000 * FPS) : 0; }
+  function startPlay() { playStart = performance.now(); requestDraw(true); }
+  function setAuto(on) {
+    AUTO = on;
+    scrubs.forEach(function (s) { s.el.classList.toggle('scrub-auto', on); });
+    playStart = 0;
+    if (on && loaded >= FRAMES) startPlay();
+  }
+
   window.mdScrubTune = function (o) {
+    if (o.auto != null) setAuto(o.auto && !reduce);
     if (o.ease != null) EASE = o.ease;
     if (o.range != null) PASS_RANGE = o.range;
     requestDraw(true);
@@ -133,23 +150,24 @@
     var resized = c.width !== w || c.height !== h;
     if (resized) { c.width = w; c.height = h; }
 
-    var target = reduce ? 0 : frameAt(progress(s));
-    if (s.cur < 0 || force || reduce) s.cur = target;
+    var target = reduce ? 0 : AUTO ? autoFrame() : frameAt(progress(s));
+    if (s.cur < 0 || force || reduce || AUTO) s.cur = target;
     else {
       var ease = s.mode === 'pin' ? M_EASE : EASE;
       s.cur = ease > 0 ? s.cur + (target - s.cur) * (1 - Math.exp(-dt / ease)) : target;   // frame-rate independent
     }
     var moving = Math.abs(target - s.cur) > 0.02;
     if (!moving) s.cur = target;
+    var run = playing();
 
     /* while gliding, cross-fade the two nearest frames; at rest show one clean frame */
     var i = Math.floor(s.cur), f = s.cur - i;
-    if (!moving) { i = Math.round(s.cur); f = 0; }
+    if (!moving && !run) { i = Math.round(s.cur); f = 0; }
     var a = imgs[i] && imgs[i]._ok ? imgs[i] : nearestLoaded(i);
     if (!a) return moving;
     var b = f > 0.03 && imgs[i + 1] && imgs[i + 1]._ok ? imgs[i + 1] : null;
     var key = a.src + '|' + (b ? b.src + Math.round(f * 20) : '');
-    if (!force && !resized && key === s.last) return moving;
+    if (!force && !resized && key === s.last) return moving || run;
     s.last = key;
 
     var ctx = c.getContext('2d');
@@ -157,7 +175,7 @@
     var box = paint(ctx, s, a, w, h);
     if (b) { ctx.globalAlpha = f; paint(ctx, s, b, w, h); ctx.globalAlpha = 1; }
     if (box) fadeEdges(ctx, box, w, h);
-    return moving;
+    return moving || run;
   }
 
   /* top navigation: give it a soft background once the page has scrolled */
