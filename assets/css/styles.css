@@ -65,3 +65,14 @@ section [style*="border-radius: 32px"],section [style*="border-radius: 28px"],se
 #teach,#m-teach{background:#F4E7CE}
 #teach [style*="background: #FFFFFF"],#m-teach [style*="background: #FFFFFF"]{background:#FFFFFF !important}
 #functions a,#m-functions a{background:#FFFFFF !important;border:1px solid #111111}
+
+/* ---------- Hero scroll scrub ----------
+   The hero is taller than the screen; its stage sticks while the duck's frames play with the scroll. */
+.scrub{position:relative;height:260vh}
+.scrub-m{height:230vh}
+.scrub-stage{position:sticky;top:0;height:100vh;min-height:560px;display:flex;flex-direction:column;padding-top:72px;box-sizing:border-box}
+.scrub-m .scrub-stage{height:100svh;min-height:600px;padding-top:64px}
+.scrub-canvas{display:block;flex:1 1 auto;min-height:0;width:100%}
+.scrub-static{height:auto}
+.scrub-static .scrub-stage{position:relative;height:100vh}
+.scrub-m.scrub-static .scrub-stage{height:100svh}

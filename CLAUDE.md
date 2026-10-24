@@ -23,6 +23,7 @@ Most styling is inline on the elements (the page was exported from a design canv
 - Layout B (current): every section is a full-width band; media and cards have square corners. Chapter colours follow the shells: Sit & stand white, Get back-up Graphite `#3A3A3C`, Walk Sky `#CFE6EE`, Yes / No Lavender `#E3DAEC`, Rollerskate black, Grab & carry orange, Teach it new tricks Cream `#F4E7CE` with white step cards. Implemented as the "Layout B" block at the end of `styles.css`, overriding the exported inline styles.
 - Buttons: fully rounded pills. Hover = orange fills up from the bottom in 5 steps (`steps(5,end)`), text turns black.
 - Sticky "Pre-order now": black pill with an orange outline on desktop (top right). On mobile it floats bottom right and docks at the end of the "Pick your colour" section. Two orange footprints inside appear one after the other.
+- Hero scroll scrub: the hero is a tall `.scrub` block whose `.scrub-stage` sticks while `assets/js/scrub.js` draws the frame sequence in `assets/media/sit-quack/` (120 WebP frames, 960px) to a canvas, so the duck sits down and quacks as you scroll. To swap the clip: re-export frames with `ffmpeg -i clip.mp4 -vf scale=960:960 -c:v libwebp -quality 72 assets/media/sit-quack/%03d.webp` and update `FRAMES` in `scrub.js`. Reduced motion shows the first frame only. The current frames come from a test AI clip.
 - Tagline under the hero logo types itself out behind an orange block cursor, cycling five lines.
 - Motion respects `prefers-reduced-motion`.
 
